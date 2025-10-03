@@ -47,7 +47,11 @@ public final class Parameter implements Serializable {
     }
 
     public void setValue(Value value) {
-        this.value = value;
+        if (value != null) {
+            this.value = value.notNull() ? value : null;
+        } else {
+            this.value = null;
+        }
     }
 
 }
